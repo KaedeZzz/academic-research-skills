@@ -36,9 +36,9 @@ Priority 1 (Required):
    - Classify per-commitment `fulfillment_status`:
      - `fulfilled` — the required_evidence_type is present and substantively addresses the commitment_text.
      - `partial` — evidence exists but does not fully address the commitment (e.g., experiment run on different dataset than asked).
-     - `not-fulfilled` — required_evidence_type is absent and `unfulfilled_rationale` is empty.
-     - `explicitly-rejected-with-rationale` — author provides one of the three valid rationale forms (done-elsewhere pointer / rejection reasons / future-work acknowledgment); not a failure.
-   - For any commitment with status ∈ `{not-fulfilled}` lacking `unfulfilled_rationale`, surface a **`COMMITMENT_GAP`** entry in re-review output (advisory only, **not** a hard block — author retains final responsibility per `POSITIONING.md`).
+     - `not-fulfilled` — required_evidence_type is absent (rationale presence is a separate axis — see COMMITMENT_GAP rule below).
+     - `explicitly-rejected-with-rationale` — author has explicitly declined to address the commitment; status name implies rationale, but `unfulfilled_rationale` is still the field that carries the actual rationale text (Schema 11 Validation rule).
+   - For any commitment with status ∈ `{partial, not-fulfilled, explicitly-rejected-with-rationale}` where `unfulfilled_rationale[i]` is empty or missing, surface a **`COMMITMENT_GAP`** entry in re-review output (advisory only, **not** a hard block — author retains final responsibility per `POSITIONING.md`). This mirrors the Schema 11 Validation rule: any non-`fulfilled` status requires a rationale.
    - This step is the verification analog of `revision_coach_agent` Step 3.5 (Kong A1). Per-commitment lifecycle gating is what closes the Kong §7.4.3 commitment-fulfillment gap.
 
 Priority 2 (Suggested):

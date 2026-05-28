@@ -28,9 +28,9 @@ This template works with both:
 
 | # | Issue Description | Reviewer | Type | Section | Resolution Summary | Location of Change | Status | Reason (if not resolved) | Commitments | Fulfillment | Unfulfilled Rationale |
 |---|-------------------|----------|------|---------|-------------------|-------------------|--------|--------------------------|-------------|-------------|----------------------|
-| 1 | [description] | [R1/R2/R3/DA] | [Major/Minor/Editorial] | [section] | [what was done] | [page/paragraph] | [status] | [if applicable] |
-| 2 | [description] | [R1/R2/R3/DA] | [Major/Minor/Editorial] | [section] | [what was done] | [page/paragraph] | [status] | [if applicable] |
-| 3 | [description] | [R1/R2/R3/DA] | [Major/Minor/Editorial] | [section] | [what was done] | [page/paragraph] | [status] | [if applicable] |
+| 1 | [description] | [R1/R2/R3/DA] | [Major/Minor/Editorial] | [section] | [what was done] | [page/paragraph] | [status] | [if applicable] | 1. [commitment_text]<br>2. [commitment_text] | 1. [fulfillment_status]<br>2. [fulfillment_status] | 1. [rationale or ""]<br>2. [rationale or ""] |
+| 2 | [description] | [R1/R2/R3/DA] | [Major/Minor/Editorial] | [section] | [what was done] | [page/paragraph] | [status] | [if applicable] | 1. [commitment_text] | 1. [fulfillment_status] | 1. [rationale or ""] |
+| 3 | [description] | [R1/R2/R3/DA] | [Major/Minor/Editorial] | [section] | [what was done] | [page/paragraph] | [status] | [if applicable] | _(empty — positive comment, no commitment)_ | _(omit)_ | _(omit)_ |
 
 ---
 
@@ -84,6 +84,8 @@ Silent omission triggers `COMMITMENT_GAP` advisory at re-review.
 Author has decided not to address the commitment and has provided one of the three rationale forms above. This is **not** a failure — it is a documented, defensible decision. Re-review records it without raising `COMMITMENT_GAP`.
 
 **Authoring guidance:** Fill in `commitment_extracted` first (typically via `revision_coach_agent` Step 3.5 output); fill `fulfillment_status` + `unfulfilled_rationale` as revision execution progresses. By final submission, every non-fulfilled commitment must have a rationale.
+
+**Parallel-list alignment (Kong A1 / v3.11):** When a row carries multiple commitments, the three cells (Commitments / Fulfillment / Unfulfilled Rationale) MUST contain index-aligned lists of the same length. Use **numbered prefixes** (`1. `, `2. `, …) in each cell so index alignment is visually verifiable; a `<br>` (or actual newline inside `|` cell, depending on Markdown flavor) separates entries. A missing entry in any of the three cells breaks per-commitment traceability — re-reviewers will flag the row. For positive comments (no extractable commitment), leave all three cells with `_(empty)_` or `_(omit)_` to mark the absence explicitly rather than silently.
 
 ---
 
